@@ -1,19 +1,26 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
 
-const customerLoginRoute = require('./routes/customerLogin');
+const customerLoginRoute = require("./routes/loginRoutes");
+const customerProfileRoutes = require("./routes/profileRoutes");
+const customerInquiryRoutes = require("./routes/inquiryRoutes");
+const salesOrderRoutes = require("./routes/salesOrderRoutes");
+const customerDeliveryRoutes = require("./routes/deliveryRoutes");
 
 const app = express();
-const PORT = 3000;
-
 app.use(cors());
 
-// Use routes
-app.use('/', customerLoginRoute);
+app.use("/", customerLoginRoute);       // /customer-login
+app.use("/profile", customerProfileRoutes); // /profile/getCustomerProfile
+app.use("/inquiry", customerInquiryRoutes); // /inquiry/getCustomerInquiry
+app.use("/salesorder", salesOrderRoutes); // /salesorder/getSalesOrders
+app.use("/delivery", customerDeliveryRoutes); // /delivery/getDeliveries
+
+const PORT = 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
 
 //Main Function
