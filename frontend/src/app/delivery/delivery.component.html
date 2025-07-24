@@ -1,0 +1,22 @@
+<div class="data-container">
+  <h2>Customer Deliveries</h2>
+
+  <div *ngIf="deliveries.length > 0" class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th *ngFor="let key of deliveries[0] | keyvalue">{{ key.key }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let delivery of deliveries">
+          <td *ngFor="let val of delivery | keyvalue">{{ val.value }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="deliveries.length === 0" class="no-data-message">
+    No deliveries found.
+  </p>
+</div>
