@@ -1,0 +1,22 @@
+<div class="inquiry-container">
+  <h2>Customer Inquiry Data</h2>
+
+  <div *ngIf="inquiries.length > 0" class="table-wrapper">
+    <table class="inquiry-table">
+      <thead>
+        <tr>
+          <th *ngFor="let key of inquiries[0] | keyvalue">{{ key.key }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of inquiries">
+          <td *ngFor="let val of row | keyvalue">{{ val.value }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="inquiries.length === 0" class="no-data-message">
+    No data available
+  </p>
+</div>
