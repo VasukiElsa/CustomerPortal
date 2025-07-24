@@ -1,0 +1,22 @@
+<div class="data-container">
+  <h2>Customer Sales Orders</h2>
+
+  <div *ngIf="salesOrders.length > 0" class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th *ngFor="let key of salesOrders[0] | keyvalue">{{ key.key }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of salesOrders">
+          <td *ngFor="let val of order | keyvalue">{{ val.value }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="salesOrders.length === 0" class="no-data-message">
+    No sales orders found.
+  </p>
+</div>
