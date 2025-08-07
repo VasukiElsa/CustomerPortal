@@ -7,6 +7,10 @@ const customerProfileRoutes = require("./routes/profileRoutes");
 const customerInquiryRoutes = require("./routes/inquiryRoutes");
 const salesOrderRoutes = require("./routes/salesOrderRoutes");
 const customerDeliveryRoutes = require("./routes/deliveryRoutes");
+const customerInvoiceRoute = require('./routes/invoiceRoutes');
+const customerAgingRoutes = require("./routes/agingRoutes");
+const customerCdMemoRoutes = require("./routes/cdMemoRoutes");
+const customerOverallSalesRoutes = require("./routes/overallSalesRoutes");
 
 const app = express();
 app.use(cors());
@@ -16,6 +20,11 @@ app.use("/profile", customerProfileRoutes); // /profile/getCustomerProfile
 app.use("/inquiry", customerInquiryRoutes); // /inquiry/getCustomerInquiry
 app.use("/salesorder", salesOrderRoutes); // /salesorder/getSalesOrders
 app.use("/delivery", customerDeliveryRoutes); // /delivery/getDeliveries
+app.use('/customer-invoice', customerInvoiceRoute);
+app.use("/aging", customerAgingRoutes);
+app.use("/cdmemo", customerCdMemoRoutes);
+app.use("/overall-sales", customerOverallSalesRoutes); // /overall-sales/getCustomerOverallSales
+
 
 const PORT = 3000;
 

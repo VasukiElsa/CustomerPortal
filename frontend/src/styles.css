@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+  styles.css - Global Styles
+  Defines the primary color palette, fonts, and box-sizing for consistency.
+*/
+
+:root {
+  --primary-bg: #f5f7fa; /* A subtle, modern light gray */
+  --secondary-bg: #FFFFFF;
+  --sidebar-bg: #1e293b; /* Dark, professional sidebar background */
+  --sidebar-text: #e2e8f0; /* Light text for sidebar */
+  --accent-color: #3b82f6; /* A professional, vibrant blue */
+  --accent-color-hover: #2563eb;
+  --primary-text: #1f2937; /* Dark charcoal for main content */
+  --secondary-text: #6b7280; /* Lighter gray for subtext */
+  --border-color: #e5e7eb;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3 {
+  color: var(--primary-text);
+}
+
+p {
+  color: var(--secondary-text);
+}
+
+.card {
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  padding: 24px;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  text-transform: uppercase;
+}
+
+button.primary {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+}
+
+button.primary:hover {
+  background-color: var(--accent-color-hover);
+}
+
+button.secondary {
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+}
+
+button.secondary:hover {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+}
+
+table th, table td {
+  text-align: left;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+table th {
+  background-color: var(--primary-bg);
+  font-weight: 700;
+  color: var(--primary-text);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+table tbody tr:hover {
+  background-color: var(--primary-bg);
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}

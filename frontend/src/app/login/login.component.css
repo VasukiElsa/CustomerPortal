@@ -1,58 +1,98 @@
-/* Center the box */
-.login-box {
-  max-width: 400px;
-  margin: 80px auto;
+/* Full-screen container for the split layout */
+.login-page {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #FFFFFF; /* Use a white background for the container */
+}
+
+/* Left side of the screen with the background image */
+.left-section {
+  flex: 1; /* Takes up one half of the space */
+  background-image: url('/assets/Login.jpg'); /* Corrected path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Right side of the screen with the login form */
+.right-section {
+  flex: 1; /* Takes up the other half of the space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Login form container */
+.login-container {
+  width: 100%;
+  max-width: 400px;
   text-align: center;
 }
 
-/* Heading */
-.login-box h2 {
-  margin-bottom: 25px;
-  color: #333;
+.header {
+  margin-bottom: 30px;
 }
 
-/* Input fields */
-.login-box input {
+.header h2 {
+  font-size: 28px;
+  color: var(--accent-color);
+  margin: 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--secondary-text);
+}
+
+.form-group input {
   width: 100%;
-  padding: 12px 15px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  box-sizing: border-box;
   font-size: 16px;
-  transition: border 0.3s;
+  transition: border-color 0.3s ease;
 }
 
-.login-box input:focus {
+.form-group input:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #3b82f6;
 }
 
-/* Button styling */
-.login-box button {
-  width: 100%;
-  padding: 12px 15px;
-  background-color: #007bff;
-  color: #fff;
+button {
+  background-color: #3b82f6;
+  color: white;
   border: none;
+  padding: 12px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-.login-box button:hover {
-  background-color: #0056b3;
+button:hover {
+  background-color: #2563eb;
 }
 
-/* Message area */
-.login-box p {
-  margin-top: 20px;
-  color: #333;
-  font-size: 15px;
+.error-message {
+  color: #dc2626;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
 }

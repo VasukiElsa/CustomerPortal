@@ -1,117 +1,41 @@
-/* Container for the entire inquiry section */
-.inquiry-container {
-  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  margin: 30px;
-  padding: 25px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  color: #333;
+/*
+  data-pages-style.css - Use this for inquiry, sales-order, delivery, etc.
+*/
+
+.data-container, .inquiry-container, .invoice-table-wrapper, .cdmemo-container, .overall-sales-container {
+  padding: 20px;
 }
 
-h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 25px;
-  font-size: 2em;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 10px;
-  display: inline-block;
-  width: 100%; /* Ensures the border spans across the center for a nice look */
+.data-container h2, .inquiry-container h2, .invoice-table-wrapper h2, .cdmemo-container h2, .overall-sales-container h2 {
+  margin-bottom: 20px;
+  color: var(--primary-text);
+  font-size: 24px;
 }
 
-/* Wrapper for the table to enable scrolling on smaller screens */
 .table-wrapper {
-  overflow-x: auto; /* Allows horizontal scrolling for wide tables */
-  margin-top: 20px;
+  overflow-x: auto;
 }
 
-/* Table styling */
-.inquiry-table {
-  width: 100%;
-  border-collapse: collapse; /* Removes double borders */
-  margin: 0;
-  background-color: #ffffff;
-  border-radius: 8px; /* Rounded corners for the table */
-  overflow: hidden; /* Ensures rounded corners are visible */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-/* Table Header */
-.inquiry-table thead {
-  background-color: #3498db; /* Primary header color */
-  color: white;
-}
-
-.inquiry-table th {
-  padding: 15px 20px;
-  text-align: left;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.9em;
-  border-bottom: 1px solid #2980b9; /* Slightly darker border for header rows */
-}
-
-/* Table Body Rows */
-.inquiry-table tbody tr {
-  border-bottom: 1px solid #e0e0e0; /* Light border between rows */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
-}
-
-.inquiry-table tbody tr:nth-child(even) {
-  background-color: #f2f7fc; /* Zebra striping for better readability */
-}
-
-.inquiry-table tbody tr:hover {
-  background-color: #eaf6ff; /* Highlight row on hover */
-  cursor: pointer;
-}
-
-/* Table Data Cells */
-.inquiry-table td {
-  padding: 12px 20px;
-  vertical-align: middle;
-  font-size: 0.9em;
-  color: #555;
-}
-
-/* No data message styling */
 .no-data-message {
   text-align: center;
-  padding: 30px;
-  font-size: 1.2em;
-  color: #7f8c8d;
-  background-color: #ecf0f1;
+  padding: 40px;
+  background-color: var(--primary-bg);
   border-radius: 8px;
-  margin-top: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--card-shadow);
+  color: var(--secondary-text);
+  font-style: italic;
+  font-size: 18px;
 }
 
-/* Responsive considerations (optional but recommended) */
-@media (max-width: 768px) {
-  .inquiry-container {
-    margin: 15px;
-    padding: 15px;
-  }
-
-  h2 {
-    font-size: 1.8em;
-  }
-
-  .inquiry-table th,
-  .inquiry-table td {
-    padding: 10px 15px;
-    font-size: 0.85em;
-  }
+.invoice-table button {
+  padding: 6px 12px;
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color var(--transition-speed);
 }
 
-@media (max-width: 480px) {
-  .inquiry-container {
-    margin: 10px;
-    padding: 10px;
-  }
-
-  h2 {
-    font-size: 1.5em;
-  }
+.invoice-table button:hover {
+  background-color: #0056b3;
 }

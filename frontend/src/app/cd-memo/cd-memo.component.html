@@ -1,0 +1,40 @@
+<div class="data-container">
+  <h2>Credit / Debit Memo Details</h2>
+
+  <div *ngIf="combinedData.length > 0" class="table-wrapper">
+    <table class="cdmemo-table">
+      <thead>
+        <tr>
+          <th>Billing Doc</th>
+          <th>Type</th>
+          <th>Type Text</th>
+          <th>Customer Name</th>
+          <th>Billing Date</th>
+          <th>Currency</th>
+          <th>Net Value</th>
+          <th>Material No</th>
+          <th>Material Desc</th>
+          <th>Quantity</th>
+          <th>Net Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of combinedData">
+          <td>{{ row.BILLING_DOC ?? 'N/A' }}</td>
+          <td>{{ row.BILLING_TYPE ?? 'N/A' }}</td>
+          <td>{{ row.DOC_TYPE_TEXT ?? 'N/A' }}</td>
+          <td>{{ row.CUSTOMER_NAME ?? 'N/A' }}</td>
+          <td>{{ row.BILLING_DATE ?? 'N/A' }}</td>
+          <td>{{ row.CURRENCY ?? 'N/A' }}</td>
+          <td>{{ row.NET_VALUE ?? 'N/A' }}</td>
+          <td>{{ row.MATERIAL_NO ?? 'N/A' }}</td>
+          <td>{{ row.MATERIAL_DESC ?? 'N/A' }}</td>
+          <td>{{ row.QUANTITY ?? 'N/A' }}</td>
+          <td>{{ row.NET_PRICE ?? 'N/A' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="combinedData.length === 0" class="no-data-message">No credit/debit memo data found.</p>
+</div>

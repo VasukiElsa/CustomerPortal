@@ -1,0 +1,34 @@
+<div class="data-container">
+  <h2>Customer Payments and Aging</h2>
+
+  <div *ngIf="agingData.length > 0" class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Billing Doc</th>
+          <th>Billing Date</th>
+          <th>Due Date</th>
+          <th>Days Overdue</th>
+          <th>Net Amount</th>
+          <th>Currency</th>
+          <th>Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of agingData">
+          <td>{{ item.BILLING_DOC }}</td>
+          <td>{{ item.BILLING_DATE }}</td>
+          <td>{{ item.DUE_DATE }}</td>
+          <td>{{ item.DAYS_OVERDUE }}</td>
+          <td>{{ item.NET_AMT }}</td>
+          <td>{{ item.CURRENCY }}</td>
+          <td>{{ item.PAYMENT_STATUS }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="agingData.length === 0" class="no-data-message">
+    No aging data found.
+  </p>
+</div>

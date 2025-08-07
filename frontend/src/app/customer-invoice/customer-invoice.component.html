@@ -1,0 +1,28 @@
+<div class="data-container">
+  <h2>Customer Invoice Details</h2>
+
+  <div *ngIf="invoices.length > 0" class="table-wrapper">
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th>Customer ID</th>
+          <th>Invoice Number</th>
+          <th>Invoice Date</th>
+          <th>Organization</th>
+          <th>PDF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of invoices">
+          <td>{{ invoice.cust_id }}</td>
+          <td>{{ invoice.invoice_no }}</td>
+          <td>{{ formatSapDate(invoice.invoice_date) }}</td>
+          <td>{{ invoice.sales_org }}</td>
+          <td><button class="primary" (click)="viewPdf(invoice.invoice_no)">View PDF</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="invoices.length === 0" class="no-data-message">No invoices found.</p>
+</div>

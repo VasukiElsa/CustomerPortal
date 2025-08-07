@@ -1,7 +1,26 @@
-<div class="login-box">
-  <h2>Customer Login</h2>
-  <input [(ngModel)]="user" placeholder="User ID" /><br /><br />
-  <input [(ngModel)]="pass" placeholder="Password" type="password" /><br /><br />
-  <button (click)="onLogin()">Login</button>
-  <p>{{ message }}</p>
+<div class="login-page">
+  <div class="left-section">
+    <!-- The image will be set as a background in CSS -->
+  </div>
+  <div class="right-section">
+    <div class="login-container">
+      <div class="header">
+        <h2>Customer Portal</h2>
+      </div>
+      <form class="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" [(ngModel)]="user" name="username" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" [(ngModel)]="pass" name="password" placeholder="Enter your password">
+        </div>
+        <button type="submit" (click)="onLogin()">Login</button>
+        <div *ngIf="message" class="error-message">
+          {{ message }}
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

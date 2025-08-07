@@ -1,52 +1,108 @@
 <div class="dashboard-container">
-  <!-- Sidebar -->
   <div class="sidebar">
-    <button (click)="selectSection('sales')">Sales Data</button>
-    <button (click)="selectSection('financial')">Financial Data</button>
+    <div class="sidebar-header">
+      <h2>Customer Portal</h2>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a class="sidebar-link" [ngClass]="{'active': activeSection === 'sales'}" (click)="selectSection('sales')">
+            <i class="fas fa-chart-line"></i> Sales Data
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" [ngClass]="{'active': activeSection === 'financial'}" (click)="selectSection('financial')">
+            <i class="fas fa-file-invoice-dollar"></i> Financial Sheet
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 
-  <!-- Main Content -->
   <div class="main-content">
-    <!-- Profile Icon -->
-    <div class="profile-icon" (click)="openProfile()" title="View Profile">👤</div>
-
-    <!-- Welcome -->
-    <div class="welcome-card">
-      <h1>Welcome Back, {{ profile?.EV_CUSTNAME || 'Customer' }}!</h1>
-      <p>We're glad to see you again.</p>
-    </div>
-
-    <!-- Profile Modal -->
-    <div class="profile-modal" *ngIf="showProfile">
-      <div class="profile-card">
-        <button class="close-btn" (click)="closeProfile()">✖</button>
-        <h2>Customer Profile</h2>
-        <p><strong>Name:</strong> {{ profile?.EV_CUSTNAME || 'N/A' }}</p>
-        <p><strong>Phone:</strong> {{ profile?.EV_PHONE || 'N/A' }}</p>
-        <p><strong>Customer Group:</strong> {{ profile?.EV_CUSTOMERGROUP || 'N/A' }}</p>
-        <p><strong>City:</strong> {{ profile?.EV_CITY || 'N/A' }}</p>
-        <p><strong>Country:</strong> {{ profile?.EV_COUNTRY || 'N/A' }}</p>
-        <p><strong>Postal Code:</strong> {{ profile?.EV_POSTALCODE || 'N/A' }}</p>
-        <p><strong>Street:</strong> {{ profile?.EV_STREET || 'N/A' }}</p>
+    
+    <div class="main-header">
+      <div class="welcome-card card">
+        <div>
+          <h1>Welcome Back, {{ profile?.EV_CUSTNAME || 'Customer' }}!</h1>
+          <p>Your portal is ready to help you manage your business data.</p>
+        </div>
+      </div>
+      
+      <div class="top-bar">
+        <div class="profile-dropdown-wrapper">
+          <div class="profile-icon" (click)="toggleProfileDropdown()">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          
+          <div class="profile-dropdown-menu" [class.show]="showProfile">
+            <div class="profile-header">
+              <h4>{{ profile?.EV_CUSTNAME || 'Customer' }}</h4>
+              <p>Customer Account</p>
+            </div>
+            <div class="profile-details-grid">
+              <strong>Phone:</strong> <span>{{ profile?.EV_PHONE || 'N/A' }}</span>
+              <strong>Customer Group:</strong> <span>{{ profile?.EV_CUSTOMERGROUP || 'N/A' }}</span>
+              <strong>Street:</strong> <span>{{ profile?.EV_STREET || 'N/A' }}</span>
+              <strong>City:</strong> <span>{{ profile?.EV_CITY || 'N/A' }}</span>
+              <strong>Postal Code:</strong> <span>{{ profile?.EV_POSTALCODE || 'N/A' }}</span>
+              <strong>Country:</strong> <span>{{ profile?.EV_COUNTRY || 'N/A' }}</span>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button class="logout-button" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+    
+    <div *ngIf="!activeSection" class="dashboard-empty-state">
+      <img src="assets/CustomerDashboard.jpg" alt="Welcome to the Dashboard">
+      <h2>Select a section from the sidebar to view your data.</h2>
+      <p>Click on 'Sales Data' or 'Financial Sheet' to get started.</p>
+    </div>
 
-    <!-- Conditional Sections -->
+    <div *ngIf="activeSection === 'sales'" class="section-header">
+      <h2>Sales Data Overview</h2>
+      <p>Explore your complete sales history and related documents.</p>
+    </div>
     <div class="cards-section" *ngIf="activeSection === 'sales'">
-      <div class="card" (click)="goToInquiry()">
+      <div class="dashboard-card card" (click)="goToInquiry()">
         <h3>Inquiry Data</h3>
+        <p>View all past inquiries for your account.</p>
       </div>
-      <div class="card" (click)="goToSalesOrder()">
+      <div class="dashboard-card card" (click)="goToSalesOrder()">
         <h3>Sales Order Data</h3>
+        <p>Track the status of your sales orders.</p>
       </div>
-      <div class="card" (click)="goToDelivery()">
+      <div class="dashboard-card card" (click)="goToDelivery()">
         <h3>List of Delivery</h3>
+        <p>See the history of all your deliveries.</p>
       </div>
     </div>
 
+    <div *ngIf="activeSection === 'financial'" class="section-header">
+      <h2>Financial Sheet Overview</h2>
+      <p>Manage your invoices, payments, and other financial records.</p>
+    </div>
     <div class="cards-section" *ngIf="activeSection === 'financial'">
-      <div class="card">
-        <h3>Financial Report (Coming Soon)</h3>
+      <div class="dashboard-card card" (click)="goToCustomerInvoice()">
+        <h3>Invoice Details</h3>
+        <p>Access and view all your invoices.</p>
+      </div>
+      <div class="dashboard-card card" (click)="goToAging()">
+        <h3>Payments and Aging</h3>
+        <p>Monitor your payment status and overdue invoices.</p>
+      </div>
+      <div class="dashboard-card card" (click)="goToCdMemo()">
+        <h3>Credit/Debit Memo</h3>
+        <p>Find credit and debit memos related to your account.</p>
+      </div>
+      <div class="dashboard-card card" (click)="goToOverallSales()">
+        <h3>Overall Sales Data</h3>
+        <p>Get a comprehensive overview of your sales history.</p>
       </div>
     </div>
   </div>
