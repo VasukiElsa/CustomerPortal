@@ -5,35 +5,29 @@
     <table class="sales-table">
       <thead>
         <tr>
-          <th>Sales Doc No</th>
-          <th>Order Date</th>
-          <th>Customer Name</th>
+          <th>Record Type</th>
+          <th>Sales Doc Type</th>
+          <th>Document No</th>
+          <th class="date-column">Document Date</th>
+          <th>Customer ID</th>
           <th>Sales Org</th>
-          <th>Material No</th>
-          <th>Description</th>
-          <th>Quantity</th>
-          <th>Unit</th>
-          <th>Net Price</th>
-          <th>Amount</th>
-          <th>Delivery Date</th>
-          <th>Delivery Plant</th>
+          <th>Total Orders</th>
+          <th>Total Order Value</th>
+          <th>Total Bill</th>
           <th>Currency</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let row of salesData">
-          <td>{{ row.SALES_DOC_NO ?? 'N/A' }}</td>
-          <td>{{ row.SALES_ORDER_DATE ?? 'N/A' }}</td>
-          <td>{{ row.CUST_NAME ?? 'N/A' }}</td>
+          <td>{{ row.RECORD_TYPE ?? 'N/A' }}</td>
+          <td>{{ row.SALES_DOC_TYPE ?? 'N/A' }}</td>
+          <td>{{ row.DOCUMENT_NO ?? 'N/A' }}</td>
+          <td class="date-column">{{ row.DOC_DATE ?? 'N/A' }}</td>
+          <td>{{ row.CUST_ID ?? 'N/A' }}</td>
           <td>{{ row.SALES_ORG ?? 'N/A' }}</td>
-          <td>{{ row.MAT_NO ?? 'N/A' }}</td>
-          <td>{{ row.MAT_DES ?? 'N/A' }}</td>
-          <td>{{ row.QTY ?? 'N/A' }}</td>
-          <td>{{ row.SALES_UNIT ?? 'N/A' }}</td>
-          <td>{{ row.NET_PRICE ?? 'N/A' }}</td>
-          <td>{{ row.AMT ?? 'N/A' }}</td>
-          <td>{{ row.DEL_DATE ?? 'N/A' }}</td>
-          <td>{{ row.DEL_PLANT ?? 'N/A' }}</td>
+          <td>{{ row.TOTAL_ORDERS ?? 'N/A' }}</td>
+          <td>{{ row.TOTAL_ORDER_VALUE ?? 'N/A' }}</td>
+          <td>{{ row.TOTAL_BILL ?? 'N/A' }}</td>
           <td>{{ row.CURRENCY ?? 'N/A' }}</td>
         </tr>
       </tbody>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,41 +11,46 @@ export class DashboardComponent implements OnInit {
   inquiryData: any = null;
   showProfile = false;
   customerId = '';
-  activeSection: string = ''; // Initialize as empty string
-
+  activeSection: string = '';
   constructor(private http: HttpClient, private router: Router) {}
-
+  
   ngOnInit(): void {
-    this.customerId = localStorage.getItem('username') || '';
+  this.customerId = localStorage.getItem('username') || '';
 
-    // Redirect to login if not logged in
-    if (!this.customerId) {
-      this.router.navigate(['/']);
-      return;
-    }
-
-    this.loadProfile();
-    this.loadInquiry();
-
-    const savedActiveSection = localStorage.getItem('activeDashboardSection');
-    if (savedActiveSection) {
-      this.activeSection = savedActiveSection;
-    }
+  if (!this.customerId) {
+    this.router.navigate(['/']);
+    return;
   }
+
+  this.loadProfile();
+  this.loadInquiry();
+
+  // Check if coming back from within dashboard navigation
+  const savedActiveSection = localStorage.getItem('activeDashboardSection');
+  const isFirstLogin = localStorage.getItem('dashboardVisited') !== 'true';
+
+  if (isFirstLogin) {
+    // First time in dashboard after login → show default pic/text
+    this.activeSection = '';
+    localStorage.setItem('dashboardVisited', 'true');
+  } else if (savedActiveSection) {
+    // Coming back from another page → restore last section
+    this.activeSection = savedActiveSection;
+  }
+}
 
   toggleProfileDropdown(): void {
     this.showProfile = !this.showProfile;
   }
 
   selectSection(section: string): void {
-    this.activeSection = section;
-    // Save activeSection to localStorage whenever it changes
-    localStorage.setItem('activeDashboardSection', section);
-  }
+  this.activeSection = section;
+  localStorage.setItem('activeDashboardSection', section);
+}
+
 
   loadProfile(): void {
     if (!this.customerId) return;
-
     this.http.get<any>(`http://localhost:3000/profile/getCustomerProfile?custId=${this.customerId}`)
       .subscribe({
         next: (data) => {
@@ -57,12 +61,9 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
-
   loadInquiry(): void {
     if (!this.customerId) return;
-
     const params = new HttpParams().set('custId', this.customerId);
-
     this.http.get<any>('http://localhost:3000/inquiry/getCustomerInquiry', { params })
       .subscribe({
         next: (data) => {
@@ -75,37 +76,31 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
-
   goToInquiry(): void {
     this.router.navigate(['/inquiry']);
   }
-
   goToSalesOrder(): void {
     this.router.navigate(['/salesorder']);
   }
-
   goToDelivery(): void {
     this.router.navigate(['/delivery']);
   }
-
   goToCustomerInvoice(): void {
     this.router.navigate(['/customer-invoice']);
   }
-
   goToAging(): void {
     this.router.navigate(['/aging']);
   }
-
   goToCdMemo(): void {
     this.router.navigate(['/cdmemo']);
   }
-
   goToOverallSales(): void {
     this.router.navigate(['/overall-sales']);
   }
 
   logout(): void {
-    localStorage.clear();
-    this.router.navigate(['/']);
-  }
+  localStorage.clear();
+  this.router.navigate(['/']);
+}
+
 }

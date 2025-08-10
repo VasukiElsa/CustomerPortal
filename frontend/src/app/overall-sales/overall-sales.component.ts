@@ -20,15 +20,16 @@ export class OverallSalesComponent implements OnInit {
   }
 
   fetchSalesData(): void {
-    const url = `http://localhost:3000/salesorder/getSalesOrders?custId=${this.customerId}`;
-    this.http.get<any[]>(url).subscribe({
-      next: (data) => {
-        this.salesData = data || [];
-        console.log('Overall Sales (from salesorder):', this.salesData);
-      },
-      error: (err) => {
-        console.error('Error fetching overall sales data:', err);
-      }
-    });
-  }
+  const url = `http://localhost:3000/overall-sales/getCustomerOverallSales?custId=${this.customerId}`;
+  this.http.get<any>(url).subscribe({
+    next: (data) => {
+      this.salesData = data.sales || [];
+      console.log('Overall Sales:', this.salesData);
+    },
+    error: (err) => {
+      console.error('Error fetching overall sales data:', err);
+    }
+  });
+}
+
 }

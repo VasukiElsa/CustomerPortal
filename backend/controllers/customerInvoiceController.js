@@ -30,7 +30,7 @@ exports.fetchCustomerInvoices = async (req, res) => {
 
   try {
     const response = await axios.post(
-      `${sapBaseUrl}/zsrv_custinvoice_data1?sap-client=100`,
+      `${sapBaseUrl}/zsrv_custinvoiceform?sap-client=100`,
       soapBody,
       {
         auth: SAP_AUTH,

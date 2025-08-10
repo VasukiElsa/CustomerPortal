@@ -11,4 +11,5 @@ module.exports = {
   sapBaseUrl: process.env.SAP_BASE_URL,
   sapAgingUrl: process.env.SAP_AGING_URL,
   sapCdMemoUrl: process.env.SAP_CDMEMO_URL,
+  sapOverallSalesUrl: process.env.SAP_OVERALLSALES_URL
 };

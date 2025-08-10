@@ -5,8 +5,8 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th>Billing Doc</th>
-          <th>Billing Date</th>
+          <th>Invoice Number</th>
+          <th class="date-column">Invoice Date</th>
           <th>Due Date</th>
           <th>Days Overdue</th>
           <th>Net Amount</th>
@@ -17,7 +17,7 @@
       <tbody>
         <tr *ngFor="let item of agingData">
           <td>{{ item.BILLING_DOC }}</td>
-          <td>{{ item.BILLING_DATE }}</td>
+          <td class="date-column">{{ item.BILLING_DATE }}</td>
           <td>{{ item.DUE_DATE }}</td>
           <td>{{ item.DAYS_OVERDUE }}</td>
           <td>{{ item.NET_AMT }}</td>

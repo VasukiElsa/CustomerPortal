@@ -5,12 +5,38 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th *ngFor="let key of deliveries[0] | keyvalue">{{ key.key }}</th>
+          <th>Delivery No</th>
+          <th>Sales Order No</th>
+          <th class="date-column">Delivery Date</th>
+          <th>Customer Name</th>
+          <th>Sales Organization</th>
+          <th>Material No</th>
+          <th>Material Description</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+          <th>Net Price</th>
+          <th>Amount</th>
+          <th>Currency</th>
+          <th>Delivery Location</th>
+          <th>Shipping ID</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let delivery of deliveries">
-          <td *ngFor="let val of delivery | keyvalue">{{ val.value }}</td>
+          <td>{{ delivery.DEL_NO }}</td>
+          <td>{{ delivery.SALESORDER_NO }}</td>
+          <td class="date-column">{{ delivery.DEL_DATE }}</td>
+          <td>{{ delivery.CUST_NAME }}</td>
+          <td>{{ delivery.SALES_ORG }}</td>
+          <td>{{ delivery.MAT_NO }}</td>
+          <td>{{ delivery.MAT_DES }}</td>
+          <td>{{ delivery.QTY }}</td>
+          <td>{{ delivery.SALES_UNIT }}</td>
+          <td>{{ delivery.NET_PRICE }}</td>
+          <td>{{ delivery.AMT }}</td>
+          <td>{{ delivery.CURRENCY }}</td>
+          <td>{{ delivery.DEL_LOCATION }}</td>
+          <td>{{ delivery.SHIP_ID }}</td>
         </tr>
       </tbody>
     </table>

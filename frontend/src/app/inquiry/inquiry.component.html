@@ -5,12 +5,28 @@
     <table class="inquiry-table">
       <thead>
         <tr>
-          <th *ngFor="let key of inquiries[0] | keyvalue">{{ key.key }}</th>
+          <th>Inquiry No</th>
+          <th class="date-column">Inquiry Date</th>
+          <th>Customer No</th>
+          <th>Customer Name</th>
+          <th>Sales Organization</th>
+          <th>Material No</th>
+          <th>Material Description</th>
+          <th>Quantity</th>
+          <th>Unit</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let row of inquiries">
-          <td *ngFor="let val of row | keyvalue">{{ val.value }}</td>
+          <td>{{ row.INQUIRY_NO }}</td>
+          <td class="date-column">{{ row.INQUIRY_DATE }}</td>
+          <td>{{ row.CUST_NO }}</td>
+          <td>{{ row.CUST_NAME }}</td>
+          <td>{{ row.SALES_ORG }}</td>
+          <td>{{ row.MATERIAL_NO }}</td>
+          <td>{{ row.MATERIAL_DESC }}</td>
+          <td>{{ row.QUANTITY }}</td>
+          <td>{{ row.UNIT }}</td>
         </tr>
       </tbody>
     </table>

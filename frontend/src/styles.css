@@ -112,3 +112,7 @@ table tbody tr:hover {
 table tbody tr:last-child td {
   border-bottom: none;
 }
+
+.date-column {
+  min-width: 150px;
+}
